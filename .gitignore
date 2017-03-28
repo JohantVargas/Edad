@@ -27,3 +27,85 @@ public class Edad {
 
     }
 }
+
+import java.util.*;
+
+public class Persona {
+
+    private String nombre;
+    private String apellido;
+    private GregorianCalendar fechaDeNacimiento;
+    private GregorianCalendar fechaDeHoy;
+
+    public Persona(String nombre, String apellido, GregorianCalendar fechaDeNacimiento, GregorianCalendar fechaDeHoy) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaDeNacimiento = fechaDeNacimiento;
+        this.fechaDeHoy = fechaDeHoy;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public GregorianCalendar getFechaDeHoy() {
+        return fechaDeHoy;
+    }
+
+    public void setFechaDeHoy(GregorianCalendar fechaDeHoy) {
+        this.fechaDeHoy = fechaDeHoy;
+    }
+
+    public GregorianCalendar getFechaDeNacimiento() {
+        return fechaDeNacimiento;
+    }
+
+    public void setFechaDeNacimiento(GregorianCalendar fechaDeNacimiento) {
+        this.fechaDeNacimiento = fechaDeNacimiento;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String calcularEdad() {
+
+        int anion = fechaDeNacimiento.get(Calendar.YEAR);
+        int mesn = fechaDeNacimiento.get(Calendar.MONTH);
+        int dian = fechaDeNacimiento.get(Calendar.DAY_OF_MONTH);
+        int aniom = fechaDeHoy.get(Calendar.YEAR);
+        int mesm = fechaDeHoy.get(Calendar.MONTH);
+        int diam = fechaDeHoy.get(Calendar.DAY_OF_MONTH);
+
+        int anio = aniom - anion;
+        int mes = (mesm - mesn);
+        int dias = diam - dian;
+
+        if (mes >= 0) {
+            if (dias < 0) {
+                mes = mes - 1;
+                dias = dias + 30;
+            }
+        } else {
+            anio = anio - 1;
+            mes = mes + 12;
+            if (dias < 0) {
+                mes = mes - 1;
+                dias = dias + 30;
+                anio = anio - 1;
+            }
+        }
+
+        String edad = "Tiene " + anio + " aÃ±os, " + mes + " meses y " + dias + " dias De Vida";
+        return edad;
+    }
+
+}

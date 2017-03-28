@@ -1,12 +1,29 @@
-*.class
+import java.util.*;
+public class Edad {
+    public static void main(String[] args) {
+        String nombre,apellido;
+        Scanner in = new Scanner(System.in);
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+        System.out.println("Ingrese su Nombre:");
+        nombre = in.nextLine();
+        System.out.println("Ingrese su Apellido:");
+        apellido = in.nextLine();
+        System.out.println("Ingrese el AÃ±o de Nacimiento:");
+        int anion = in.nextInt();
+        System.out.println("Ingrese el Mes de Nacimiento: (en numeros)");
+        int mesn = in.nextInt() - 1;
+        System.out.println("Ingrese el Dia de Nacimiento: (en numeros)");
+        int dian = in.nextInt();
+        System.out.println("Ingrese este AÃ±o:");
+        int aniom = in.nextInt();
+        System.out.println("Ingrese este Mes:(en numeros)");
+        int mesm = in.nextInt() - 1;
+        System.out.println("Ingrese el Dia de Hoy:(en numeros)");
+        int diam = in.nextInt();
+        Persona obj = new Persona(nombre, apellido, new GregorianCalendar(anion, mesn, dian), new GregorianCalendar(aniom, mesm, diam));
+        System.out.println("Su Nombre es: " + obj.getNombre());
+        System.out.println("Su Apellido es: " + obj.getApellido());
+        System.out.println(obj.calcularEdad());
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+    }
+}
